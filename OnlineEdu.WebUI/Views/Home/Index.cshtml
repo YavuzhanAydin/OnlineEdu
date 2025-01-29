@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/UILayout/Layout.cshtml";
+}
+
+
+
+
+@await Component.InvokeAsync("_HomeBannerComponent")
+
+@await Component.InvokeAsync("_HomeCourseCategoryComponent")
+
+@await Component.InvokeAsync("_HomeCounterComponent")
+
+@await Component.InvokeAsync("_HomeCourseComponent")
+
+
+
+@await Component.InvokeAsync("_HomeAboutComponent")
+
+@await Component.InvokeAsync("_HomeTestimonialComponent")
+
+@await Component.InvokeAsync("_HomeBlogComponent")

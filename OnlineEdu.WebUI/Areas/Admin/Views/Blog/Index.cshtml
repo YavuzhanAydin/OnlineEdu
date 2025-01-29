@@ -1,0 +1,75 @@
+﻿@model List<ResultsBlogDto>
+@{
+    ViewData["Title"] = "Bloglar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+	int count = 0;
+}
+
+<table class="table table-hover">
+
+	<tr>
+		<th>#</th>
+		<th>Resim</th>
+		<th>Blog Başlığı</th>
+		<th>Tarih</th>
+		<th>Kategori</th>
+
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		count++;
+		<tr>
+			<th>@count</th>
+			<td><img src="@item.ImageURL" style="height:75px; width:75px"></img></td>
+			<td>@item.Title</td>
+			<td>@item.BlogDate.ToShortDateString()</td>
+			<td>@item.BlogCategory.Name</td>
+
+			<td>
+
+
+				
+				<a asp-action="DeleteBlog" asp-controller="Blog" asp-area="Admin" asp-route-id="@item.BlogID" class="btn btn-outline-danger">Sil </a>
+				<a asp-action="UpdateBlog" asp-controller="Blog" asp-area="Admin" asp-route-id="@item.BlogID" class="btn btn-outline-info">Güncelle </a>
+
+
+
+
+			</td>
+
+		</tr>
+
+
+	}
+</table>
+
+<br />
+<a asp-action="CreateBlog" asp-controller="Blog" asp-area="Admin" class="btn btn-outline-primary">Blog  Ekle</a>
+
+<script>
+
+	function DeleteBlog(id) {
+		console.log("deleteBlogCategory fonksiyonu çalıştı. ID: " + id);
+
+		Swal.fire({
+			title: "Silmek İstediğine Emin Misin?",
+			text: "Bu İşlem Geri Alınamaz!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Evet , Sil!"
+					cancelButtonText: "İptal"
+		}).then((result) => {
+			if (result.isConfirmed) {
+
+				window.location.href = "/Admin/Blog/DeleteBlog/" + id;
+			}
+		});
+	}
+</script>
+

@@ -1,0 +1,46 @@
+﻿@model List<ResultTeacherSocialDto>
+@{
+    ViewData["Title"] = "Sosyal Medyalarım";
+    Layout = "~/Areas/Teacher/Views/TeacherLayout/Index.cshtml";
+}
+
+@{
+	int count = 0;
+}
+
+<table class="table table-hover">
+
+	<tr>
+		<th>#</th>
+		<th>Sosyal Medya</th>
+
+
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		count++;
+		<tr>
+			<th>@count</th>
+			<td><a href="@item.Url" target="_parent" > <i class="@item.Icon"></i> </a>@item.SocialMediaName</td>
+			
+			<td>
+
+
+
+				<a asp-action="DeleteTeacherSocial" asp-controller="MySocialMedia" asp-area="Teacher" asp-route-id="@item.TeacherSocialId" class="btn btn-outline-danger">Sil </a>
+				<a asp-action="UpdateTeacherSocial" asp-controller="MySocialMedia" asp-area="Teacher" asp-route-id="@item.TeacherSocialId" class="btn btn-outline-info">Güncelle </a>
+
+
+
+
+			</td>
+
+		</tr>
+
+
+	}
+</table>
+
+<br />
+<a asp-action="CreateTeacherSocial" asp-controller="MySocialMedia" asp-area="Teacher" class="btn btn-outline-primary">Sosyal Medya  Ekle</a>

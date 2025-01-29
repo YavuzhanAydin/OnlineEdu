@@ -1,0 +1,57 @@
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using OnlineEdu.Business.Abstract;
+using OnlineEdu.DTO.DTOs.AboutDtos;
+using OnlineEdu.Entity.Entities;
+using System.Security.Cryptography.X509Certificates;
+
+namespace OnlineEduAPI.Controllers
+{
+    [Authorize(Roles ="Admin")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AboutsController(IGenericService<About> _aboutService,IMapper _mapper) : ControllerBase
+    {
+        [AllowAnonymous]
+        [HttpGet]
+
+        public IActionResult Get() 
+        {
+            var values = _aboutService.TGetList();
+            return Ok(values);
+        }
+        [AllowAnonymous]
+        [HttpGet("{id}")]
+        public IActionResult GetByID(int id) 
+        {
+            var value = _aboutService.TGetById(id);
+            return Ok(value);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id) 
+        {
+            _aboutService.TDelete(id);
+            return Ok("Hakkımızda Alanı Kaldırıldı");
+        }
+        [HttpPost]
+        public IActionResult Create(CreateAboutDto createAboutDto) 
+        {
+            var newvalue= _mapper.Map<About>(createAboutDto);
+            _aboutService.TCreate(newvalue);
+            return Ok("Yeni Hakkımızda Alanı Eklendi");
+        }
+
+        [HttpPut]
+        public IActionResult Update(UpdateAboutDto updateAboutDto)
+        {
+            var value = _mapper.Map<About>(updateAboutDto);
+            _aboutService.TUpdate(value);
+            return Ok("Hakkımızda Alanı Güncellendi");
+                
+        }
+
+    }
+}

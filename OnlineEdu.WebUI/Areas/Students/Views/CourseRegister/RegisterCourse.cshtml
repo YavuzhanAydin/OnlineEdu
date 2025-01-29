@@ -1,0 +1,16 @@
+﻿@model CreateCourseRegisterDto
+@{
+    ViewData["Title"] = "Kursa Kayıt Ol";
+    Layout = "~/Areas/Students/Views/StudentsLayout/Index.cshtml";
+}
+
+<form method="post">
+    <label>Kurs</label>
+    <select asp-for="CourseID" asp-items="ViewBag.courses" class="form-control">
+        <option>Kurs Seçiniz</option>
+
+    </select>
+    </br>
+    <button class="btn btn-outline-primary">Kursa Kayıt Ol</button>
+
+</form>

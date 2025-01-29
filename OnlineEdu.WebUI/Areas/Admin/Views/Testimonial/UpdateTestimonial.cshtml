@@ -1,0 +1,28 @@
+﻿@model UpdateTestimonialDto
+@{
+    ViewData["Title"] = "Refaransları Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="TestiMonialID" />
+    <label>Referans Kişisi</label>
+    <input type="text" asp-for="Name" class="form-control"></input>
+    <br />
+
+    <label>Unvan</label>
+    <input type="text" asp-for="Title" class="form-control"></input>
+    <br />
+    <label>Resim Url</label>
+    <input type="text" asp-for="ImageURl" class="form-control"></input>
+    <br />
+    <label>Yorum</label>
+    <textarea type="text" asp-for="Comment" class="form-control" rows="3"></textarea>
+    <br />
+    <label>Puan (5 Üzerinden)</label>
+    <input type="number" asp-for="Star" class="form-control"></input>
+    <br />
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+</form>
+

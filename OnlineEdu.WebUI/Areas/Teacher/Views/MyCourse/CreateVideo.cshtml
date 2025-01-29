@@ -1,0 +1,18 @@
+﻿@model CreateCourseVideoDtos
+@{
+    ViewData["Title"] = "CreateVideo";
+    Layout = "~/Areas/Teacher/Views/TeacherLayout/Index.cshtml";
+}
+
+<h3>Kurs Adı : <strong>@ViewBag.courseName</strong> </h3>
+<form method="post">
+    <input type="hidden" name="CourseId" value="@ViewBag.courseId" />
+    <label>Video Sıra No </label>
+    <input type="number" asp-for="VideoNumber" class="form-control" required></input>
+    </br>
+    <label>Video Url </label>
+    <input type="text" asp-for="VideoUrl" class="form-control" required></input>
+    </br>
+    <button class="btn btn-outline-primary" >Kaydet</button>
+
+</form>

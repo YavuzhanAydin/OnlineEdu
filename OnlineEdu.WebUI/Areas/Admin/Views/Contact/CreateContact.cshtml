@@ -1,0 +1,26 @@
+﻿@model CreateContactDto
+@{
+    ViewData["Title"] = "Yeni İletişim Ekleme Sayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" >
+    <label>Harita Url</label>
+    <input type="text" asp-for="MapURL" class="form-control"/>
+    <br />
+
+    <label>Adres</label>
+    <input type="text" asp-for="Adress" class="form-control" />
+    <br />
+
+    <label>Telefon</label>
+    <input type="text" asp-for="Phone" class="form-control" />
+    <br />
+
+    <label>Email</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <br />
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+
+</form>
